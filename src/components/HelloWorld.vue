@@ -1,5 +1,6 @@
 <template>
   <div id="sdg-chart"></div>
+  <img id="imagestuff" src="./stuffimage.png">
 </template>
 
 <script setup>
@@ -66,6 +67,12 @@ onMounted(() => {
   width: 100%;
   height: 600px; /* Adjust height as needed */
 }
+#imagestuff {
+  max-width: 107%; /* Ensure it doesn't exceed the width of its container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+
 </style>
 
 
