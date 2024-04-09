@@ -1,33 +1,50 @@
 <template>
-  <div class="hello">
-    <button @click="increment">Click Me</button>
-    <h1>{{number}}</h1>
-  </div>
+  <div id="simple-chart"></div>
 </template>
 
 <script setup>
-import {ref} from "vue";
-const number = ref(0)
+import { onMounted } from 'vue';
+import Highcharts from 'highcharts';
 
-const increment = () => {
-  number.value += 1
-}
+// Component setup
+onMounted(() => {
+  // Chart configuration
+  const chartOptions = {
+    chart: {
+      type: 'bar', // Change chart type as needed
+      renderTo: 'simple-chart'
+    },
+    title: {
+      text: 'Fruit Consumption'
+    },
+    xAxis: {
+      categories: ['Apples', 'Bananas', 'Oranges']
+    },
+    yAxis: {
+      title: {
+        text: 'Fruit eaten'
+      }
+    },
+    series: [{
+      name: 'Jane',
+      data: [1, 0, 4]
+    }, {
+      name: 'John',
+      data: [5, 7, 3]
+    }]
+  };
+
+  // Initialize chart
+  Highcharts.chart(chartOptions);
+});
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+<style>
+/* Style your chart container as needed */
+#simple-chart {
+  width: 100%;
+  height: 400px;
 }
 </style>
+
+
